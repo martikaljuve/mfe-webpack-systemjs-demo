@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "app1": "http://localhost:3001/remoteEntry.js",
+          "app2": "http://localhost:3002/remoteEntry.js",
+          "app3": "http://localhost:3003/remoteEntry.js",
+          "app1/": "http://localhost:3001/",
+          "app2/": "http://localhost:3002/",
+          "app3/": "http://localhost:3003/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/systemjs/dist/system.js"></script>
+    <script>
+      System.import("app2/main.js");
+    </script>
+  </body>
+</html>
