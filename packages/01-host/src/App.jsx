@@ -39,7 +39,7 @@ function App({ routes: Routes }) {
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" noWrap>
-              Module Federation
+              SystemJS import-maps + Webpack 5 module federation
             </Typography>
           </Toolbar>
         </AppBar>

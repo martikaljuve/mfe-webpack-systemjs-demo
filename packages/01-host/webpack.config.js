@@ -1,5 +1,6 @@
 // @ts-check
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const webpack = require("webpack");
+const ModuleFederationPlugin = webpack.container.ModuleFederationPlugin;
 const CopyPlugin = require("copy-webpack-plugin");
 
 const pkg = require("./package.json");
@@ -46,10 +47,24 @@ module.exports = {
       name: "app1",
       library: { type: "system" },
       filename: "remoteEntry.js",
-      exposes: {
-        "./AppContainer": "./src/App",
+      // exposes: {
+      //   "./AppContainer": "./src/App",
+      // },
+      // remotes: {
+      //   app2: 'app2',
+      //   app3: 'app3',
+      // },
+      shared: {
+        ...pkg.dependencies,
+        react: {
+          singleton: true,
+          requiredVersion: pkg.dependencies.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: pkg.dependencies["react-dom"],
+        },
       },
-      shared: pkg.dependencies,
     }),
     new CopyPlugin({
       patterns: [{ from: "public", to: "." }],

@@ -1,9 +1,12 @@
-import { createStyles, makeStyles } from "@material-ui/core/styles";
-import Divider from "@material-ui/core/Divider";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+import {
+  Divider,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  createStyles,
+  makeStyles,
+} from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -41,10 +44,10 @@ export default function SideNav() {
           <ListItemText primary="Home" />
         </ListItem>
         <ListItem button component={Link} to="/page1">
-          <ListItemText primary="Dialog" />
+          <ListItemText primary="App 2 (Dialog)" />
         </ListItem>
         <ListItem button component={Link} to="/page2">
-          <ListItemText primary="Styled Components" />
+          <ListItemText primary="App 3 (Styled Components)" />
         </ListItem>
       </List>
     </Drawer>

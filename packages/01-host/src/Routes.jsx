@@ -1,12 +1,12 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
-const Page1 = React.lazy(() => import("./pages/Page1"));
-const Page2 = React.lazy(() => import("./pages/Page2"));
+import Home from "./pages/Home";
+import Page1 from "./pages/Page1";
+import Page2 from "./pages/Page2";
 
-function Home() {
-  return <div>...</div>;
-}
+// const Page1 = React.lazy(() => import("./pages/Page1"));
+// const Page2 = React.lazy(() => import("./pages/Page2"));
 
 export default function Routes1() {
   return (

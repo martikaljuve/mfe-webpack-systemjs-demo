@@ -1,5 +1,6 @@
 // @ts-check
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const webpack = require("webpack");
+const ModuleFederationPlugin = webpack.container.ModuleFederationPlugin;
 const CopyPlugin = require("copy-webpack-plugin");
 
 const pkg = require("./package.json");
@@ -44,7 +45,17 @@ module.exports = {
       exposes: {
         "./Button": "./src/Button",
       },
-      shared: pkg.dependencies,
+      shared: {
+        ...pkg.dependencies,
+        react: {
+          singleton: true,
+          requiredVersion: pkg.dependencies.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: pkg.dependencies["react-dom"],
+        },
+      },
     }),
     new CopyPlugin({
       patterns: [{ from: "public", to: "." }],
